@@ -23,7 +23,6 @@ spring:
   application:
     name: HOMEWORK-ARTEM-GATEWAY
 
-
 eureka:
   client:
     service-url:
