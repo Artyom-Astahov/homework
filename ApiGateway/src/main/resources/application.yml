@@ -1,0 +1,30 @@
+spring:
+  cloud:
+    gateway:
+        routes:
+          - id: store-ws
+            uri: lb://store-ws
+            predicates:
+              - Path=/store/**
+            filters:
+              - AuthenticationFilter
+
+          - id: warehouse-ws
+            uri: lb://warehouse-ws
+            predicates:
+              - Path=/stock/**
+            filters:
+              - AuthenticationFilter
+
+          - id: identity-service
+            uri: lb://identity-service
+            predicates:
+              - Path=/auth/**
+  application:
+    name: HOMEWORK-ARTEM-GATEWAY
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
